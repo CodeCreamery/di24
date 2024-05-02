@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Date App</title>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const socket = io();
+				const room = "dateRoom"; // All users join the same room for this example
+				socket.emit("joinRoom", room);
+
+				document.querySelectorAll(".button").forEach((button) => {
+					button.addEventListener("click", function () {
+						socket.emit("buttonPressed", { room: room, buttonId: this.id });
+					});
+				});
+
+				socket.on("buttonUpdate", (buttonId) => {
+					const btn = document.getElementById(buttonId);
+					btn.innerText = `Button ${buttonId} pressed`;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Press a button!</h1>
+		<button id="button1" class="button">Button 1</button>
+		<button id="button2" class="button">Button 2</button>
+	</body>
+</html>

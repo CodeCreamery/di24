@@ -6,25 +6,22 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
-	res.send("Welcome to the Date Planner!");
+	res.sendFile(__dirname + "/index.html");
 });
 
 io.on("connection", (socket) => {
-	console.log("A user connected");
+	console.log("A user connected: " + socket.id);
 
-	socket.on("createSession", (sessionId) => {
-		socket.join(sessionId);
-		console.log(`User joined session: ${sessionId}`);
+	socket.on("joinRoom", (room) => {
+		socket.join(room);
+		console.log(`User ${socket.id} joined room: ${room}`);
 	});
 
-	socket.on("dateIdea", (data) => {
-		// broadcast date idea to all users in the same session
-		io.to(data.sessionId).emit("newDateIdea", data.idea);
-	});
-
-	socket.on("finalizeDate", (data) => {
-		io.to(data.sessionId).emit("dateFinalized", data.idea);
+	socket.on("buttonPressed", (data) => {
+		io.to(data.room).emit("buttonUpdate", data.buttonId);
 	});
 
 	socket.on("disconnect", () => {
@@ -32,7 +29,7 @@ io.on("connection", (socket) => {
 	});
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 server.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
