@@ -1,0 +1,77 @@
+body, html {
+    background-color: #555;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center; /* Align vertically center */
+    justify-content: center; /* Align horizontally center */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Adjust width as necessary, or max-width for larger viewports */
+    max-width: 600px; /* Maximum width of the form */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for better focus */
+    background-color: rgb(49, 49, 49); /* Background color for the form area */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+.bubble-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ensures bubbles are centered within the container */
+    gap: 10px; /* Adds space between bubbles */
+}
+
+/* Hide the radio buttons */
+input[type="radio"] {
+    appearance: none; /* Modern method to remove default styles */
+    position: absolute; /* Remove from normal flow */
+    width: 1px; /* Minimal impact on layout */
+    height: 1px; /* Minimal impact on layout */
+    opacity: 0; /* Hide visually but remain accessible */
+}
+
+/* Styling for the bubble labels */
+.bubble {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s, transform 0.2s;
+    user-select: none; /* Prevent text selection */
+}
+
+.bubble:hover, input[type="radio"]:checked + .bubble {
+    background-color: #bada55; /* Highlight color when hovered or selected */
+    transform: scale(1.05); /* Slightly enlarge on hover or when selected */
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 200px; /* Adjust width as needed */
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Adjust positioning as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.bubble:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
