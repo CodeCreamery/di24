@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Interactive Room App</title>
+
+		<link rel="stylesheet" href="/styles.css" />
+		<script src="/socket.io/socket.io.js"></script>
+	</head>
+
+	<body>
+		<div class="form-container">
+			<h2>You are in Room: <span id="roomId"></span></h2>
+
+			<button onclick="copyRoomLink()">Copy Room Link</button>
+
+			<p id="roomDisplay"></p>
+			<form id="preferenceForm">
+				<!-- New question about preferred time of day -->
+				<p>Select your favorite type of date:</p>
+				<div class="bubble-options">
+					<input type="radio" id="dining" name="dateType" value="Dining" />
+					<label for="dining" class="bubble"
+						>Dining<span class="tooltip"
+							>E.g., Fine dining, local eateries</span
+						></label
+					>
+
+					<input type="radio" id="outdoor" name="dateType" value="Outdoor" />
+					<label for="outdoor" class="bubble"
+						>Outdoor<span class="tooltip"
+							>E.g., Hiking, beach, park picnics</span
+						></label
+					>
+
+					<input type="radio" id="cultural" name="dateType" value="Cultural" />
+					<label for="cultural" class="bubble"
+						>Cultural<span class="tooltip"
+							>E.g., Museums, theaters, concerts</span
+						></label
+					>
+
+					<input
+						type="radio"
+						id="entertainment"
+						name="dateType"
+						value="Entertainment"
+					/>
+					<label for="entertainment" class="bubble"
+						>Entertainment<span class="tooltip"
+							>E.g., Concerts, live sports, movies</span
+						></label
+					>
+
+					<input
+						type="radio"
+						id="adventure"
+						name="dateType"
+						value="Adventure"
+					/>
+					<label for="adventure" class="bubble"
+						>Adventure<span class="tooltip"
+							>E.g., Escape rooms, exploring new areas, theme parks</span
+						></label
+					>
+
+					<input
+						type="radio"
+						id="relaxation"
+						name="dateType"
+						value="Relaxation"
+					/>
+					<label for="relaxation" class="bubble"
+						>Relaxation<span class="tooltip"
+							>E.g., Spa days, quiet retreats</span
+						></label
+					>
+
+					<input
+						type="radio"
+						id="educational"
+						name="dateType"
+						value="Educational"
+					/>
+					<label for="educational" class="bubble"
+						>Educational<span class="tooltip"
+							>E.g., Workshops, museum tours, historical walks</span
+						></label
+					>
+
+					<input type="radio" id="seasonal" name="dateType" value="Seasonal" />
+					<label for="seasonal" class="bubble"
+						>Seasonal<span class="tooltip"
+							>E.g., Seasonal festivals, holiday events</span
+						></label
+					>
+				</div>
+				<!-- New question about budget -->
+				<p>What is your budget for a date?</p>
+				<div class="bubble-options">
+					<input type="radio" id="low" name="budget" value="Low" />
+					<label for="low" class="bubble">$</label>
+
+					<input type="radio" id="medium" name="budget" value="Medium" />
+					<label for="medium" class="bubble">$$</label>
+
+					<input type="radio" id="high" name="budget" value="High" />
+					<label for="high" class="bubble">$$$</label>
+				</div>
+
+				<!-- New question about time -->
+				<p>What time will the date be</p>
+				<div class="bubble-options">
+					<input type="radio" id="morning" name="budget" value="morning" />
+					<label for="morning" class="bubble">morning</label>
+
+					<input type="radio" id="afternoon" name="budget" value="afternoon" />
+					<label for="afternoon" class="bubble">afternoon</label>
+
+					<input type="radio" id="evening" name="budget" value="evening" />
+					<label for="evening" class="bubble">evening</label>
+				</div>
+
+				<!-- New question about location -->
+				<p>What is your budget for a date?</p>
+				<div class="bubble-options">
+					<input type="radio" id="low" name="budget" value="Low" />
+					<label for="low" class="bubble">$</label>
+
+					<input type="radio" id="medium" name="budget" value="Medium" />
+					<label for="medium" class="bubble">$$</label>
+
+					<input type="radio" id="high" name="budget" value="High" />
+					<label for="high" class="bubble">$$$</label>
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+
+		<script>
+			document
+				.getElementById("preferenceForm")
+				.addEventListener("submit", function (event) {
+					event.preventDefault();
+
+					const selectedDateType = document.querySelector(
+						'input[name="dateType"]:checked'
+					).value;
+					const selectedTimeOfDay = document.querySelector(
+						'input[name="timeOfDay"]:checked'
+					)
+						? document.querySelector('input[name="timeOfDay"]:checked').value
+						: "Not selected";
+					const selectedBudget = document.querySelector(
+						'input[name="budget"]:checked'
+					)
+						? document.querySelector('input[name="budget"]:checked').value
+						: "Not selected";
+
+					console.log("Selected date type:", selectedDateType);
+					console.log("Preferred time of day:", selectedTimeOfDay);
+					console.log("Budget for the date:", selectedBudget);
+				});
+		</script>
+
+		<script>
+			const roomId = window.location.pathname.split("/")[2]; // Extract room ID from URL
+			document.getElementById("roomId").textContent = roomId;
+
+			function copyRoomLink() {
+				const fullUrl = window.location.href;
+				navigator.clipboard.writeText(fullUrl).then(() => {
+					alert("Room link copied to clipboard!");
+				});
+			}
+		</script>
+	</body>
+</html>
