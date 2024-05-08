@@ -18,23 +18,28 @@
 			<p id="roomDisplay"></p>
 			<form id="preferenceForm">
 				<!-- New question about preferred time of day -->
-				<p>Select your favorite type of date:</p>
+				<p>Select your favorite types of dates:</p>
 				<div class="bubble-options">
-					<input type="radio" id="dining" name="dateType" value="Dining" />
+					<input type="checkbox" id="dining" name="dateType" value="Dining" />
 					<label for="dining" class="bubble"
 						>Dining<span class="tooltip"
 							>E.g., Fine dining, local eateries</span
 						></label
 					>
 
-					<input type="radio" id="outdoor" name="dateType" value="Outdoor" />
+					<input type="checkbox" id="outdoor" name="dateType" value="Outdoor" />
 					<label for="outdoor" class="bubble"
 						>Outdoor<span class="tooltip"
 							>E.g., Hiking, beach, park picnics</span
 						></label
 					>
 
-					<input type="radio" id="cultural" name="dateType" value="Cultural" />
+					<input
+						type="checkbox"
+						id="cultural"
+						name="dateType"
+						value="Cultural"
+					/>
 					<label for="cultural" class="bubble"
 						>Cultural<span class="tooltip"
 							>E.g., Museums, theaters, concerts</span
@@ -42,7 +47,7 @@
 					>
 
 					<input
-						type="radio"
+						type="checkbox"
 						id="entertainment"
 						name="dateType"
 						value="Entertainment"
@@ -54,7 +59,7 @@
 					>
 
 					<input
-						type="radio"
+						type="checkbox"
 						id="adventure"
 						name="dateType"
 						value="Adventure"
@@ -66,7 +71,7 @@
 					>
 
 					<input
-						type="radio"
+						type="checkbox"
 						id="relaxation"
 						name="dateType"
 						value="Relaxation"
@@ -78,7 +83,7 @@
 					>
 
 					<input
-						type="radio"
+						type="checkbox"
 						id="educational"
 						name="dateType"
 						value="Educational"
@@ -89,7 +94,12 @@
 						></label
 					>
 
-					<input type="radio" id="seasonal" name="dateType" value="Seasonal" />
+					<input
+						type="checkbox"
+						id="seasonal"
+						name="dateType"
+						value="Seasonal"
+					/>
 					<label for="seasonal" class="bubble"
 						>Seasonal<span class="tooltip"
 							>E.g., Seasonal festivals, holiday events</span
@@ -115,31 +125,22 @@
 					<input type="radio" id="morning" name="timeOfDay" value="morning" />
 					<label for="morning" class="bubble">morning</label>
 
-					<input type="radio" id="afternoon" name="timeOfDay" value="afternoon" />
+					<input
+						type="radio"
+						id="afternoon"
+						name="timeOfDay"
+						value="afternoon"
+					/>
 					<label for="afternoon" class="bubble">afternoon</label>
 
 					<input type="radio" id="evening" name="timeOfDay" value="evening" />
 					<label for="evening" class="bubble">evening</label>
 				</div>
 
-				<!-- New question about location -->
-				<p>cock or balls?</p>
-				<div class="bubble-options">
-					<input type="radio" id="cock" name="cockball" value="cock" />
-					<label for="cock" class="bubble">cock</label>
-
-					<input type="radio" id="ball" name="cockball" value="ball" />
-					<label for="ball" class="bubble">ball</label>
-
-					<input type="radio" id="neither" name="cockball" value="neither" />
-					<label for="neither" class="bubble">neither</label>
-				</div>
 				<button type="submit">Submit</button>
 			</form>
-			<script type = "text/javascript" src="/app.js">
-			</script>
+			<script type="text/javascript" src="/app.js"></script>
 		</div>
-		
 
 		<script>
 			const roomId = window.location.pathname.split("/")[2]; // Extract room ID from URL

@@ -36,6 +36,21 @@ input[type="radio"] {
     opacity: 0; /* Hide visually but remain accessible */
 }
 
+input[type="checkbox"] {
+    display: none; /* Completely removes the checkbox from the layout */
+}
+
+.bubble:hover {
+    background-color: #e0e0e0; /* Slight color change on hover */
+    transform: scale(1.05); /* Slight scale up on hover */
+}
+
+/* Visual feedback for active selections */
+input[type="checkbox"]:checked + .bubble {
+    background-color: #bada55; /* Change background color when selected */
+    color: white; /* Change text color for better contrast */
+}
+
 /* Styling for the bubble labels */
 .bubble {
     display: inline-block;

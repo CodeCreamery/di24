@@ -1,56 +1,43 @@
-document
-.getElementById("preferenceForm")
-.addEventListener("submit", function (event) {
-	event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+	const socket = io(); // Connect to the WebSocket server
+	const roomId = getRoomIdFromUrl(); // Extract roomId from URL
 
-	const selectedDateType = document.querySelector(
-		'input[name="dateType"]:checked'
-	)
-	? document.querySelector('input[name="timeOfDay"]:checked').value
-		: "Not selected";
+	document
+		.getElementById("preferenceForm")
+		.addEventListener("submit", (event) => {
+			event.preventDefault();
 
-	const selectedTimeOfDay = document.querySelector(
-		'input[name="timeOfDay"]:checked'
-	)
-		? document.querySelector('input[name="timeOfDay"]:checked').value
-		: "Not selected";
+			// Serialize form data into JSON
+			const formData = {
+				roomId: roomId,
+				dateTypes: [],
+				budget: null,
+				timeOfDay: null,
+			};
 
-	const selectedBudget = document.querySelector(
-		'input[name="budget"]:checked'
-	)
-		? document.querySelector('input[name="budget"]:checked').value
-		: "Not selected";
-	
-	const selectedcockballs = document.querySelector(
-		'input[name="cockball"]:checked'
-	)
-		? document.querySelector('input[name="cockball"]:checked').value
-		: "Not selected";
+			// Collect data for multiple selections of date types
+			document
+				.querySelectorAll('input[name="dateType"]:checked')
+				.forEach((checkbox) => {
+					formData.dateTypes.push(checkbox.value);
+				});
 
-	console.log("Selected date type:", selectedDateType);
-	console.log("Preferred time of day:", selectedTimeOfDay);
-	console.log("Budget for the date:", selectedBudget);
-	console.log("coac");
-		
-		// Serialize form data into JSON
-const formData = {};
-new FormData(document.getElementById("preferenceForm")).forEach((value, key) => {
-	formData[key] = value;
+			formData.budget = document.querySelector(
+				'input[name="budget"]:checked'
+			)?.value;
+			formData.timeOfDay = document.querySelector(
+				'input[name="timeOfDay"]:checked'
+			)?.value;
+
+			// Emit the form data to the server via Socket.IO
+			socket.emit("submitForm", formData);
+
+			// Handle the response from the server
+			// Error handling or additional feedback could be implemented here
+		});
 });
-console.log(formData);
-// Send the JSON data to the server
 
-fetch('/submit-form', {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json'
-	},
-	body: JSON.stringify(formData)
-})
-.then(response => {
-	// Handle response from server if needed
-})
-.catch(error => {
-	console.error('Error:', error);
-});
-});
+function getRoomIdFromUrl() {
+	const urlSegments = window.location.pathname.split("/");
+	return urlSegments[urlSegments.length - 1]; // Gets the last segment of the URL
+}
