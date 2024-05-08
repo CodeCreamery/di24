@@ -123,46 +123,21 @@
 				</div>
 
 				<!-- New question about location -->
-				<p>What is your budget for a date?</p>
+				<p>cock or balls?</p>
 				<div class="bubble-options">
-					<input type="radio" id="low" name="budget" value="Low" />
-					<label for="low" class="bubble">$</label>
+					<input type="radio" id="cock" name="cockball" value="cock" />
+					<label for="cock" class="bubble">cock</label>
 
-					<input type="radio" id="medium" name="budget" value="Medium" />
-					<label for="medium" class="bubble">$$</label>
+					<input type="radio" id="ball" name="cockball" value="ball" />
+					<label for="ball" class="bubble">ball</label>
 
-					<input type="radio" id="high" name="budget" value="High" />
-					<label for="high" class="bubble">$$$</label>
+					<input type="radio" id="neither" name="cockball" value="neither" />
+					<label for="neither" class="bubble">neither</label>
 				</div>
 				<button type="submit">Submit</button>
 			</form>
 		</div>
-
-		<script>
-			document
-				.getElementById("preferenceForm")
-				.addEventListener("submit", function (event) {
-					event.preventDefault();
-
-					const selectedDateType = document.querySelector(
-						'input[name="dateType"]:checked'
-					).value;
-					const selectedTimeOfDay = document.querySelector(
-						'input[name="timeOfDay"]:checked'
-					)
-						? document.querySelector('input[name="timeOfDay"]:checked').value
-						: "Not selected";
-					const selectedBudget = document.querySelector(
-						'input[name="budget"]:checked'
-					)
-						? document.querySelector('input[name="budget"]:checked').value
-						: "Not selected";
-
-					console.log("Selected date type:", selectedDateType);
-					console.log("Preferred time of day:", selectedTimeOfDay);
-					console.log("Budget for the date:", selectedBudget);
-				});
-		</script>
+		<script src="app.js"></script>
 
 		<script>
 			const roomId = window.location.pathname.split("/")[2]; // Extract room ID from URL

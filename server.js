@@ -28,7 +28,23 @@ io.on("connection", (socket) => {
 	// Further handling for messages or interactions
 });
 
+app.post('/submit-form', (req, res) => {
+    // Parse JSON data sent from client
+    const formData = req.body;
+    
+    // Access form fields from formData object
+    console.log('Received form data:', formData);
+
+    // Process the form data as needed
+    // For example, save to a database, perform validation, etc.
+
+    // Send a response back to the client if needed
+    res.send('Form data received successfully!');
+});
+
 const PORT = 3000;
 server.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
+
+
