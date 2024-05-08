@@ -16,7 +16,7 @@ app.get("/new-room", (req, res) => {
 });
 
 app.get("/room/:roomId", (req, res) => {
-	res.sendFile(__dirname + "/public/room.html");
+	res.sendFile(path.join(__dirname, "public", "room.html"));
 });
 
 io.on("connection", (socket) => {
