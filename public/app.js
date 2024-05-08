@@ -5,12 +5,16 @@ document
 
 		const selectedDateType = document.querySelector(
 			'input[name="dateType"]:checked'
-		).value;
+		)
+		? document.querySelector('input[name="timeOfDay"]:checked').value
+			: "Not selected";
+
 		const selectedTimeOfDay = document.querySelector(
 			'input[name="timeOfDay"]:checked'
 		)
 			? document.querySelector('input[name="timeOfDay"]:checked').value
 			: "Not selected";
+
 		const selectedBudget = document.querySelector(
 			'input[name="budget"]:checked'
 		)
