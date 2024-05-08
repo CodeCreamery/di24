@@ -13,7 +13,7 @@ function getDateIdea(type, timeOfDay, budget) {
 						} else if (timeOfDay === "evening") {
 							ideas.push("b");
 						} else {
-							ideas.push("c");
+							ideas.push("GO EAT YUMYUM KFC");
 						}
 						break;
 					case "Medium":
