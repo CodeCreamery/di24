@@ -27,7 +27,14 @@ function compareSubmissions(submissions) {
 		}
 		i++;
 	}
-	console.log(matching);
+	if	(matching.length === 0){
+		//display sad face and tell em to redo
+		console.log("There are no matching preferences")
+	}
+	else{
+		//display happy face then transition to matching cards
+		console.log("here are the matching preferences: ", matching)
+	};
 }
 
 module.exports = { compareSubmissions };

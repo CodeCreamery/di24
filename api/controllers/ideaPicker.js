@@ -9,11 +9,11 @@ function getDateIdea(type, timeOfDay, budget) {
 				switch (budget) {
 					case "High":
 						if (timeOfDay === "morning") {
-							ideas.push("a");
+							ideas.push("Hotel Breakfast Buffet");
 						} else if (timeOfDay === "evening") {
-							ideas.push("b");
+							ideas.push("Fine Dining Establishment");
 						} else {
-							ideas.push("GO EAT YUMYUM KFC");
+							ideas.push("KFC YUM YUM");
 						}
 						break;
 					case "Medium":
@@ -191,9 +191,9 @@ function getDateIdea(type, timeOfDay, budget) {
 						break;
 					case "Low":
 						if (timeOfDay === "morning") {
-							ideas.push("a");
+							ideas.push("Morning walk followed by a picnic");
 						} else if (timeOfDay === "evening") {
-							ideas.push("b");
+							ideas.push("Chill at home, watch a series/movie");
 						} else {
 							ideas.push("c");
 						}
@@ -257,7 +257,7 @@ function getDateIdea(type, timeOfDay, budget) {
 						break;
 					case "Low":
 						if (timeOfDay === "morning") {
-							ideas.push("a");
+							ideas.push("Balling");
 						} else if (timeOfDay === "evening") {
 							ideas.push("b");
 						} else {
