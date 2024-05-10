@@ -6,7 +6,10 @@ body, html {
     align-items: center; /* Align vertically center */
     justify-content: center; /* Align horizontally center */
 }
-
+/*change p color in form*/
+#preferenceForm .form-paragraph{
+    color: white;
+}
 .form-container {
     display: flex;
     flex-direction: column;
@@ -47,6 +50,11 @@ input[type="checkbox"] {
 
 /* Visual feedback for active selections */
 input[type="checkbox"]:checked + .bubble {
+    background-color: #bada55; /* Change background color when selected */
+    color: white; /* Change text color for better contrast */
+}
+
+input[type="radio"]:checked + .bubble {
     background-color: #bada55; /* Change background color when selected */
     color: white; /* Change text color for better contrast */
 }
