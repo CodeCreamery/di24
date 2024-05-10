@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Interactive Room App</title>
+		<title>Dately</title>
 
 		<link rel="stylesheet" href="/styles.css" />
 		<script src="/socket.io/socket.io.js"></script>
@@ -11,14 +11,18 @@
 
 	<body>
 		<div class="form-container">
-			<h2 style="color: white;">You are in Room: <span id="roomId"></span></h2>
+			<h2 class="title">You are in Room: <span id="roomId"></span></h2>
 
-			<button onclick="copyRoomLink()">Copy Room Link</button>
+			<button class="copyButton" onclick="copyRoomLink()">
+				Copy Room Link
+			</button>
 
 			<p id="roomDisplay"></p>
 			<form id="preferenceForm">
 				<!-- New question about preferred time of day -->
-				<p class="form-paragraph">Select your favorite types of dates (Max 3):</p>
+				<p class="form-paragraph">
+					Select your favorite types of dates (Max 3)
+				</p>
 				<div class="bubble-options">
 					<input type="checkbox" id="dining" name="dateType" value="Dining" />
 					<label for="dining" class="bubble"
@@ -107,7 +111,7 @@
 					>
 				</div>
 				<!-- New question about budget -->
-				<p class="form-paragraph">What is your budget for a date?</p>
+				<p class="form-paragraph">What is your budget for a date</p>
 				<div class="bubble-options">
 					<input type="radio" id="low" name="budget" value="Low" />
 					<label for="low" class="bubble">$</label>
@@ -137,7 +141,9 @@
 					<label for="evening" class="bubble">evening</label>
 				</div>
 
-				<button type="submit">Submit</button>
+				<div class="buttonDiv">
+					<button class="submitButton" type="submit">Submit</button>
+				</div>
 			</form>
 			<script type="text/javascript" src="/app.js"></script>
 		</div>
