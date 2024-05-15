@@ -8,11 +8,19 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById("instructions").addEventListener("click", function() {
-    document.getElementById("imageViewer").style.display = "block"; // Show the modal
+    var imageViewer = document.getElementById("imageViewer");
+    imageViewer.style.display = "block";
+    setTimeout(function() {
+        imageViewer.style.opacity = "1"; // Fade in the modal
+    }, 50);
 });
 
 document.querySelector(".close").addEventListener("click", function() {
-    document.getElementById("imageViewer").style.display = "none"; // Hide the modal when close button is clicked
+    var imageViewer = document.getElementById("imageViewer");
+    imageViewer.style.opacity = "0"; // Fade out the modal
+    setTimeout(function() {
+        imageViewer.style.display = "none";
+    }, 300); // Hide the modal after the transition ends
 });
 
 // Image Navigation
