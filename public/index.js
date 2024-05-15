@@ -16,7 +16,7 @@ document.querySelector(".close").addEventListener("click", function() {
 });
 
 // Image Navigation
-var images = ["./assets/DATEKTLY.svg", "./assets/logo.svg", "./assets/DATEKTLY.svg"]; // Add more image URLs as needed
+var images = ["./assets/instructions1.jpg", "./assets/logo.svg", "./assets/DATEKTLY.svg"]; // Add more image URLs as needed
 var currentImageIndex = 0;
 var modalImage = document.getElementById("modalImage");
 
